@@ -1,0 +1,353 @@
+:root{
+    --main-radius: 5px;
+    --main-padding: 5px;
+    --blue: #2567a8;
+    --white: #ffffff;
+    --greenish: #009688;
+    --grey: #cbc8c8;
+}
+
+.grid-container{
+    font-family: 'Alumni Sans Collegiate One', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    padding: 5px;
+    color: black;
+    background: var(--grey);
+    border-radius: 10px;
+
+    
+    display: grid;
+    grid-template-rows: 0.1fr 0.5fr 0.5fr 0.8fr 0.8fr 0.8fr 0.1fr;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns */
+    grid-template-areas: 
+    "nav nav nav nav nav nav nav" 
+    "header header header header header header header"
+    "edu edu edu edu edu edu edu"
+    "proj proj proj proj proj proj proj"
+    "exp exp exp exp exp exp exp"
+    "blog blog blog blog blog blog blog"
+    "footer footer footer footer footer footer footer"
+    ;
+}
+  /* Nav Section and Nav Toggle */
+
+  nav {
+    display: flex;
+    grid-area: nav;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--greenish);
+    color: var(--white);
+    padding: 10px;
+  }
+  
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin: 0 10px;
+  }
+  
+  .menu a {
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+  }
+
+  .menu a:hover{
+    background-color: #ddd;
+    color: black;
+  }
+  
+  #menu-toggle{
+    display: none;
+  }
+
+
+/* Header Section */
+header{
+    grid-area: header;
+    background-color: var(--white);
+}
+
+header .thumbnail{
+    width: 25%;
+    padding-bottom: 21px;
+}
+
+header .thumbnail img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+}
+
+header .thumbnail h3{
+    text-align: center;
+    font-weight: bold;
+}
+
+header .thumbnail p{
+    text-align: center;
+    font-weight: bold;
+}
+
+header .skillset{
+    width: 75%;
+}
+
+.subheader{
+    float: left;
+}
+
+
+
+/*Education Section Styling */
+.edu{
+    grid-area: edu;
+    background: var(--white);
+    padding: 10px;
+}
+
+
+/*Project Section Styling */
+.proj{
+    grid-area: proj;
+    background: #dbdada;
+    padding: 10px;
+}
+
+.projchild{
+    float: left;
+    width: 32%;
+    padding: 10px;
+}
+
+.proj-hd-left{
+    background-color: #514c4c;
+    padding: 5px;
+    color: white;
+    text-align: center;
+}
+
+.proj-hd-mid{
+    background-color: #009688;
+    padding: 5px;
+    color: white;
+    text-align: center;
+}
+
+.proj-hd-right{
+    background-color: #514c4c;
+    padding: 5px;
+    color: white;
+    text-align: center;
+}
+
+
+/*Experience Section Styling */
+.exp{
+    grid-area: exp;
+    background: #dbdada;
+    padding: 10px;
+}
+
+
+/*Blog Section Styling */
+.blog{
+    grid-area: blog;
+    background: var(--white);
+    padding: 10px;
+}
+
+.blogchild{
+    float: left;
+    width: 32%;
+    padding: 10px;
+}
+
+.blogchild h3{
+    text-align: center;
+}
+
+.blogchild img{
+    display: block;
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blogchild a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.blogchild a:hover{
+    background-color: #009688;
+    color: white;
+    padding: 10px;
+}
+
+
+/*Footer Section Styling */
+footer{
+    grid-area: footer;
+    background-color: #009688!important;
+    color: #ffffff;
+}
+
+footer .left{
+    float: left;
+}
+
+footer .right{
+    float: right;
+}
+
+footer a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+}
+
+footer a:hover{
+    background-color: #ddd;
+    color: black;
+}
+
+footer h3 {
+    padding-left: 10px;
+}
+
+h1{
+    color: var(--greenish);
+}
+
+
+@media only screen and (max-width: 500px) {
+    .grid-container {
+        grid-template-rows: repeat(7, auto);
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "nav"
+            "header"
+            "edu"
+            "proj"
+            "exp"
+            "blog"
+            "footer"
+            ;
+    }
+
+    /* Nav Toggle for Mobile view */
+
+    .menu {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        transition: all 0.5s ease-in;
+        background-color: #555;
+      }
+      
+      .menu li {
+        margin: 10px;
+      }
+      
+      .menu-icon {
+        display: block;
+      }
+      
+      #menu-toggle:checked ~ .menu {
+        left: 0;
+      }
+
+    header .thumbnail{
+        width: 25%;
+        padding-bottom: 21px;
+    }
+
+      header .thumbnail img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        max-width: 80%;
+        height: auto;
+        border-radius: 10px;
+    }
+    
+}
+
+
+@media only screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-rows: repeat(7, auto);
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "nav"
+            "header"
+            "edu"
+            "proj"
+            "exp"
+            "blog"
+            "footer"
+            ;
+    }
+
+    /* Nav Toggle for Mobile view */
+
+    .menu {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        transition: all 0.5s ease-in;
+        background-color: #555;
+      }
+      
+      .menu li {
+        margin: 10px;
+      }
+      
+      .menu-icon {
+        display: block;
+      }
+      
+      #menu-toggle:checked ~ .menu {
+        left: 0;
+      }
+
+      header .thumbnail{
+        width: 25%;
+        padding-bottom: 21px;
+    }
+
+      header .thumbnail img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        max-width: 80%;
+        height: auto;
+        border-radius: 10px;
+    }
+}
