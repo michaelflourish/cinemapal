@@ -11,7 +11,7 @@ app.get('/api', (req, res) => {
   res.json(data);
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(3000, () => {
+  console.log('API server running on port 3000');
 });
+
