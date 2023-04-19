@@ -1,9 +1,12 @@
 const http =require('http');
 const path = require('path');
 const fs = require('fs');
-const cors = require('cors');
 
 const server = http.createServer((req, res)=>{
+
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
      
     if( req.url ==='/'){
      
@@ -17,15 +20,19 @@ const server = http.createServer((req, res)=>{
         });
 
 
-    } else if(req.url ==='/api'){
+    } else if(req.method === 'GET' && req.url ==='/api'){
 
       fs.readFile(path.join(__dirname,'public','db.json'), 'utf-8',
       (err, content)=>{
 
-          if(err ) throw err;
-          res.setHeader("Access-Control-Allow-Origin", "*");
-          res.writeHead(200, { 'Content-type': 'application/json'});
-          res.end(content);
+          if(err ) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Internal Server Error' }));
+          } else {
+            res.writeHead(200, { 'Content-type': 'application/json'});
+            res.end(content);
+          }
+          
       });
 
 
@@ -84,6 +91,6 @@ const server = http.createServer((req, res)=>{
     }
 });
 
-server.listen(() => {
-  console.log('Server is running');
+server.listen(3000, () => {
+  console.log('Server is listening on port 3000');
 });
