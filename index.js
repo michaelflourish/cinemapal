@@ -17,7 +17,18 @@ const server = http.createServer((req, res)=>{
         });
 
 
-    }
+    } else if(req.url ==='/api'){
+
+      fs.readFile(path.join(__dirname,'public','db.json'), 'utf-8',
+      (err, content)=>{
+
+          if(err ) throw err;
+          res.writeHead(200, { 'Content-type': 'application/json'});
+          res.end(content);
+      });
+
+
+  }
     else if(req.url ==='/images/1.png'){
 
        
@@ -66,18 +77,6 @@ const server = http.createServer((req, res)=>{
     });
 
   }
-    else if(req.url ==='/api'){
-
-        fs.readFile(path.join(__dirname,'public','db.json'), 'utf-8',
-        (err, content)=>{
-
-            if(err ) throw err ;
-            res.writeHead(200, { 'Content-type': 'application/json'})  
-            res.end(content);
-        });
-
-
-    }
     else{
         res.writeHead(404, { 'Content-type': 'text/html'})  
         res.end("<h1> 404 Nothing is Here </h1>")
