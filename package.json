@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "nodemon index",
     "lint": "eslint .",
     "test": "jest",
     "compile": "babel src -d lib",
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "webpack --config webpack.config.client.js",
-    "build:server": "webpack --config webpack.config.server.js"
+    "build": "npm run build:client && npm run build:server"
   },
   "repository": {
     "type": "git",
