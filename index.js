@@ -28,6 +28,7 @@ const server = http.createServer((req, res)=>{
       });
   }
     else if(req.url ==='/style.css'){
+      //styles
       fs.readFile(path.join(__dirname,'public','style.css'),
       (err, content)=>{
           if(err ) throw err;
