@@ -4,12 +4,7 @@
   "description": "My Node Server for Web Development",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index",
-    "lint": "eslint .",
-    "test": "jest",
-    "compile": "babel src -d lib",
-    "build": "npm run build:client && npm run build:server"
+    "dev": "nodemon index"
   },
   "repository": {
     "type": "git",
