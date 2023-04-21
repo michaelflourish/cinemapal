@@ -4,8 +4,7 @@
   "description": "My Node Server for Web Development",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index",
-    "build": "cp db.json build/static/db.json && react-scripts build"
+    "dev": "nodemon index"
   },
   "repository": {
     "type": "git",
