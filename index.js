@@ -27,7 +27,8 @@ const server = http.createServer((request, response) => {
         response.end(content);
       }
     });
-  } else if (url === '/style.css') {
+  } 
+  else if (url === '/style.css') {
     fs.readFile(path.join(__dirname, 'public', 'style.css'), 'utf-8', (error, content) => {
       if (error) {
         response.writeHead(500, { 'Content-Type': 'text/plain' });
