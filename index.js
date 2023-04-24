@@ -27,18 +27,7 @@ const server = http.createServer((request, response) => {
         response.end(content);
       }
     });
-  } else if (url === '/api2') {
-    fs.readFile(path.join(__dirname, 'public', 'db.json'), (error, content) => {
-      if (error) {
-        response.writeHead(500, { 'Content-Type': 'text/plain' });
-        response.end(`An error occurred: ${error.message}`);
-      } else {
-        response.setHeader('Access-Control-Allow-Origin', '*');
-        response.writeHead(200, { 'Content-Type': 'application/json' });
-        response.end(content);
-      }
-    });
-  } 
+  }  
   else if (url === '/style.css') {
     fs.readFile(path.join(__dirname, 'public', 'style.css'), 'utf-8', (error, content) => {
       if (error) {
@@ -59,7 +48,7 @@ const server = http.createServer((request, response) => {
         response.end(content);
       }
     });
-  } else if (url === '/images/mike_flourish.jpg') {
+  } else if (url === '/images/mike_flourish.JPG') {
     fs.readFile(path.join(__dirname, 'public', 'images', 'mike_flourish.jpg'), (error, content) => {
       if (error) {
         response.writeHead(500, { 'Content-Type': 'text/plain' });
