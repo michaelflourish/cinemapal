@@ -22,7 +22,6 @@ const server = http.createServer((request, response) => {
         response.writeHead(500, { 'Content-Type': 'text/plain' });
         response.end(`An error occurred: ${error.message}`);
       } else {
-        response.setHeader('Access-Control-Allow-Origin', '*');
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(content);
       }
