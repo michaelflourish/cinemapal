@@ -1,6 +1,7 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
 
 
 const server = http.createServer((request, response) => {
