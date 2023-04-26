@@ -1,11 +1,14 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
-const cors = require('cors');
-
 
 const server = http.createServer((request, response) => {
   const { method, url } = request;
+
+  // Add CORS headers
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (url === '/') {
     fs.readFile(path.join(__dirname, 'public', 'index.html'), 'utf-8', (error, content) => {
@@ -27,8 +30,7 @@ const server = http.createServer((request, response) => {
         response.end(content);
       }
     });
-  }  
-  else if (url === '/style.css') {
+  } else if (url === '/style.css') {
     fs.readFile(path.join(__dirname, 'public', 'style.css'), 'utf-8', (error, content) => {
       if (error) {
         response.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -70,7 +72,7 @@ const server = http.createServer((request, response) => {
     });
   } else {
     response.writeHead(404, { 'Content-Type': 'text/html' });
-    response.end('<h1>404 Nothing is Here</h1>');
+    response.end('<h1>404 Not Found</h1>');
   }
 });
 
@@ -78,4 +80,3 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-  
