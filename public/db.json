@@ -1,5 +1,4 @@
-{
-  "movies": [
+ [
     {
       "title": "The Shawshank Redemption",
       "genre": "Drama",
@@ -64,5 +63,4 @@
       "year": "1999",
       "imageUrl": "https://tse2.mm.bing.net/th?id=OIP.ogyCOr1LdKZmSpAr5euEyQHaEK&pid=Api&P=0"
     }
-  ]
-}
+]
