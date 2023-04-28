@@ -1,6 +1,7 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
+const {MongoClient, HerokuApi} = require('mongodb');
 
 const server = http.createServer((request, response) => {
   const { method, url } = request;
@@ -21,7 +22,10 @@ const server = http.createServer((request, response) => {
       }
     });
   } else if (url === '/api') {
-    fs.readFile(path.join(__dirname, 'public', 'db.json'), 'utf-8', (error, content) => {
+
+    async function findAll(client) {
+      const cursor = client.db("Cinemapal").collection("movies").find({});
+      const results = await cursor.toArray();
       if (error) {
         response.writeHead(500, { 'Content-Type': 'text/plain' });
         response.end(`An error occurred: ${error.message}`);
@@ -29,7 +33,24 @@ const server = http.createServer((request, response) => {
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(content);
       }
-    });
+
+    }
+
+    async function main(){
+      const uri = "mongodb+srv://mike:Gigtak27071906@flourishcluster.ivwt2g1.mongodb.net/?retryWrites=true&w=majority";
+      const client = new MongoClient(uri);
+  
+      try {
+          await client.connect();
+      } catch(e){
+          await findAll(client);
+      } finally{
+          await client.close();
+      }
+  }
+
+  main().catch(console.error);
+
   } else if (url === '/style.css') {
     fs.readFile(path.join(__dirname, 'public', 'style.css'), 'utf-8', (error, content) => {
       if (error) {
