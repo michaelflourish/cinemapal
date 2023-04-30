@@ -43,6 +43,8 @@ const server = http.createServer((request, response) => {
     async function findAll(client) {
       const cursor = await client.db("Cinemapal").collection("movies").find({});
       const results = await cursor.toArray();
+      console.log(results);
+
    
       response.writeHead(200, { 'Content-Type': 'application/json' });
       response.write(JSON.stringify(results));
@@ -76,7 +78,7 @@ const server = http.createServer((request, response) => {
         response.writeHead(500, { 'Content-Type': 'text/plain' });
         response.end(`An error occurred: ${error.message}`);
       } else {
-        response.writeHead(200, { 'Content-Type': 'image/jpeg' });
+        response.writeHead(200, { 'Content-Type': 'image/jpg' });
         response.end(content);
       }
     });
