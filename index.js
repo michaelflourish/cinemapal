@@ -93,6 +93,7 @@ const server = http.createServer((request, response) => {
       }
     });
   } else {
+    //404 error
     response.writeHead(404, { 'Content-Type': 'text/html' });
     response.end('<h1>404 Not Found</h1>');
   }
