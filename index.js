@@ -73,12 +73,12 @@ const server = http.createServer((request, response) => {
       }
     });
   } else if (url === '/images/mike_flourish.JPG') {
-    fs.readFile(path.join(__dirname, 'public', 'images', 'mike_flourish.jpg'), (error, content) => {
+    fs.readFile(path.join(__dirname, 'public', 'images', 'mike_flourish.JPG'), (error, content) => {
       if (error) {
         response.writeHead(500, { 'Content-Type': 'text/plain' });
         response.end(`An error occurred: ${error.message}`);
       } else {
-        response.writeHead(200, { 'Content-Type': 'image/jpg' });
+        response.writeHead(200, { 'Content-Type': 'image/JPG' });
         response.end(content);
       }
     });
